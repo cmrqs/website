@@ -30,7 +30,8 @@
           "options": {
             "allowedCommonJsDependencies": ["t-writer.js"],
             "outputPath": {
-              "base": "dist/website"
+              "base": "docs",
+              "browser": ""
             },
             "index": "src/index.html",
             "polyfills": ["zone.js"],
