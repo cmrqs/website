@@ -1,0 +1,185 @@
+<section id="contact" class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-4">
+        <h3 class="title">
+          <i class="bi bi-chat-dots-fill text-primary"></i> Contact
+        </h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          ultrices, orci ut auctor blandit, libero urna scelerisque mauris, sit
+          amet sollicitudin tellus orci non nunc.
+        </p>
+      </div>
+
+      <div class="col-12 col-md-8 mt-2 mt-md-0">
+        <h4 class="mb-4">
+          <i class="bi bi-envelope-at-fill text-primary"></i> Get in touch
+        </h4>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+          <div class="row">
+            <div class="col-12 col-lg-6 mb-2">
+              <div class="input-group">
+                <span class="input-group-text"
+                  ><i class="bi bi-person-circle fs-4"></i
+                ></span>
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    name="from_name"
+                    formControlName="name"
+                    class="form-control"
+                    [class.is-valid]="
+                      form.get('name')?.touched && form.get('name')?.valid
+                    "
+                    [class.is-invalid]="
+                      form.get('name')?.touched && !form.get('name')?.valid
+                    "
+                    id="inputName"
+                    placeholder="Your name"
+                    (blur)="onInputBlur('name')"
+                  />
+                  <label for="inputName">Name *</label>
+                </div>
+                <div
+                  class="text-danger w-100"
+                  *ngIf="form.get('name')?.touched && !form.get('name')?.valid"
+                >
+                  Your name must have at least {{ nameMinLength }} characters.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6 mb-2">
+              <div class="input-group">
+                <span class="input-group-text"
+                  ><i class="bi bi-at fs-4"></i
+                ></span>
+                <div class="form-floating">
+                  <input
+                    type="email"
+                    name="email"
+                    formControlName="email"
+                    class="form-control"
+                    [class.is-valid]="
+                      form.get('email')?.touched && form.get('email')?.valid
+                    "
+                    [class.is-invalid]="
+                      form.get('email')?.touched && !form.get('email')?.valid
+                    "
+                    id="inputEmail"
+                    placeholder="your@email.com"
+                    (blur)="onInputBlur('email')"
+                  />
+                  <label for="inputEmail">Email *</label>
+                </div>
+                <div
+                  class="text-danger w-100"
+                  *ngIf="
+                    form.get('email')?.touched && !form.get('email')?.valid
+                  "
+                >
+                  Invalid email, please review.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group mb-2">
+            <span class="input-group-text"
+              ><i class="bi bi-quote fs-4"></i
+            ></span>
+            <div class="form-floating">
+              <input
+                type="text"
+                name="subject"
+                formControlName="subject"
+                class="form-control"
+                [class.is-valid]="
+                  form.get('subject')?.touched && form.get('subject')?.valid
+                "
+                [class.is-invalid]="
+                  form.get('subject')?.touched && !form.get('subject')?.valid
+                "
+                id="inputSubject"
+                placeholder="Subject"
+                (blur)="onInputBlur('subject')"
+              />
+              <label for="inputSubject">Subject *</label>
+            </div>
+
+            <div
+              class="text-danger w-100"
+              *ngIf="
+                form.get('subject')?.touched && !form.get('subject')?.valid
+              "
+            >
+              The email subject must have at least
+              {{ subjectMinLength }} characters.
+            </div>
+          </div>
+
+          <div class="input-group mb-4">
+            <span class="input-group-text"
+              ><i class="bi bi-body-text fs-4"></i
+            ></span>
+            <div class="form-floating">
+              <textarea
+                name="message"
+                formControlName="message"
+                class="form-control"
+                [class.is-valid]="
+                  form.get('message')?.touched && form.get('message')?.valid
+                "
+                [class.is-invalid]="
+                  form.get('message')?.touched && !form.get('message')?.valid
+                "
+                id="inputMessage"
+                placeholder="Type here"
+                (blur)="onInputBlur('message')"
+                style="height: 200px"
+              ></textarea>
+              <label for="inputMessage">Message *</label>
+            </div>
+            <div
+              class="text-danger w-100"
+              *ngIf="
+                form.get('message')?.touched && !form.get('message')?.valid
+              "
+            >
+              Your message must have at least {{ messageMinLength }} characters.
+            </div>
+          </div>
+
+          <div class="tel-wrapper">
+            <label for="tel">Telephone:</label>
+            <input
+              type="tel"
+              name="phone"
+              formControlName="botCheck"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!form.valid"
+          >
+            Send email <i class="bi bi-send-slash" *ngIf="!form.valid"></i>
+            <i class="bi bi-send" *ngIf="form.valid"></i>
+          </button>
+          <p
+            class="mt-2"
+            *ngIf="responseMessage"
+            [class.text-success]="responseSuccess"
+            [class.text-danger]="!responseSuccess"
+          >
+            {{ responseMessage }}
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

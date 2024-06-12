@@ -1,0 +1,40 @@
+#home {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.home-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60vw;
+  height: 60vh;
+  min-height: 400px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-image: url("/assets/img/home.png");
+}
+
+.home-img::after {
+  content: "";
+  position: absolute;
+  right: -20vh;
+  bottom: -20vh;
+  width: 120vh;
+  height: 120vh;
+  border-radius: 50%;
+  background: var(--bs-dark-bg-subtle);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+@media (max-width: 991px) {
+  .home-img {
+    opacity: 0.4;
+    width: 100vw;
+    background-size: contain;
+    background-position: bottom right;
+  }
+}

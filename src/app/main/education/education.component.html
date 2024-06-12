@@ -1,0 +1,144 @@
+<section id="education" class="section">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-4">
+        <h3 class="title">
+          <i class="bi bi-mortarboard-fill text-primary"></i> Education
+        </h3>
+        <app-timeline [entries]="education"></app-timeline>
+      </div>
+      <div class="col-lg-8 mt-4 mt-lg-0">
+        <nav ngbNav #nav="ngbNav" class="nav-tabs">
+          <ng-container ngbNavItem>
+            <a ngbNavLink><i class="bi bi-braces"></i> Coding</a>
+            <ng-template ngbNavContent>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col" colspan="2">
+                      Hours <i class="bi bi-arrow-down"></i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let language of programmingLanguages">
+                    <th style="width: 25%">
+                      <i
+                        class="me-2 colored"
+                        [class]="'devicon-' + language.icon"
+                      ></i>
+                      {{ language.name }}
+                    </th>
+                    <td style="width: 15%">{{ language.hours | number }}+</td>
+                    <td style="width: 60%">
+                      <ngb-progressbar
+                        type="primary"
+                        [value]="language.hours"
+                        [max]="maxProgrammingHours"
+                      >
+                      </ngb-progressbar>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="d-flex justify-content-between p-2">
+                <ngb-pagination
+                  [collectionSize]="languageSize"
+                  [(page)]="page"
+                  [pageSize]="pageSize"
+                  (pageChange)="refreshLanguages()"
+                >
+                </ngb-pagination>
+              </div>
+            </ng-template>
+          </ng-container>
+
+          <ng-container ngbNavItem>
+            <a ngbNavLink><i class="bi bi-translate"></i> Languages</a>
+            <ng-template ngbNavContent>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col" colspan="2">
+                      Proficiency <i class="bi bi-arrow-down"></i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let language of languages">
+                    <th style="width: 25%">
+                      {{ language.translatedName }}
+                    </th>
+                    <td style="width: 15%">
+                      {{ getProficiencyName(language.proficiency) }}
+                    </td>
+                    <td style="width: 60%">
+                      <ngb-rating
+                        [rate]="language.proficiency"
+                        [max]="maxProficiency"
+                        [readonly]="true"
+                      >
+                        <ng-template let-fill="fill" let-index="index">
+                          <i
+                            class="bi bi-star{{
+                              fill === 100 ? '-fill' : ''
+                            }} me-1"
+                            [class.filled]="fill === 100"
+                            [class.unfilled]="fill !== 100"
+                          ></i>
+                        </ng-template>
+                      </ngb-rating>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-template>
+          </ng-container>
+
+          <ng-container ngbNavItem>
+            <a ngbNavLink><i class="bi bi-book-half"></i> Courses</a>
+            <ng-template ngbNavContent>
+              <div
+                class="card w-100"
+                style="width: 18rem"
+                *ngFor="let course of courses"
+              >
+                <div class="card-body">
+                  <h5 class="card-title">{{ course.name }}</h5>
+                  <h6 class="card-subtitle mb-2">
+                    {{ course.hours | number : "1.0-0" }}h
+                  </h6>
+                  <p class="card-text">
+                    {{ course.description }}
+                  </p>
+                  <a
+                    [href]="course.link"
+                    target="_blank"
+                    class="btn btn-primary me-3"
+                    >View details</a
+                  >
+                  <a
+                    [href]="course.certificate"
+                    target="_blank"
+                    class="btn btn-outline-primary"
+                  >
+                    View certificate
+                  </a>
+                </div>
+                <div class="card-footer">
+                  <i class="bi bi-check2"></i> Completed on
+                  {{ course.completionDate | date : "MMMM y" }}
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </nav>
+
+        <div [ngbNavOutlet]="nav" class="mt-2 h-100"></div>
+      </div>
+    </div>
+  </div>
+</section>

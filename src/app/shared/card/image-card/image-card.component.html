@@ -1,0 +1,17 @@
+<a [href]="entry.url" target="_blank" class="text-decoration-none">
+  <div class="card">
+    <img
+      [src]="entry.src"
+      [style.width.px]="size"
+      [style.height.px]="size"
+      class="card-img-top"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ entry.title }}</h5>
+      <p class="card-text">{{ entry.text }} Lorem</p>
+    </div>
+    <div class="card-footer text-body-secondary" *ngIf="entry.releaseDate">
+      Released on {{ entry.releaseDate | date }}
+    </div>
+  </div>
+</a>

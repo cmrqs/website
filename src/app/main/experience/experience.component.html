@@ -1,0 +1,64 @@
+<section id="experience" class="section">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-4">
+        <h3 class="title">
+          <i class="bi bi-briefcase-fill text-primary"></i> Experience
+        </h3>
+        <app-timeline [entries]="experience"></app-timeline>
+      </div>
+      <div class="col-lg-8">
+        <nav ngbNav #nav="ngbNav" class="nav-tabs">
+          <ng-container ngbNavItem>
+            <a ngbNavLink><i class="bi bi-controller"></i> Games</a>
+            <ng-template ngbNavContent>
+              <ngb-carousel>
+                <ng-template ngbSlide *ngFor="let game of games">
+                  <a [href]="game.link" class="text-decoration-none">
+                    <div class="card">
+                      <img [src]="game.imgSrc" class="h-100 card-img" />
+                    </div>
+                  </a>
+                  <div class="carousel-caption">
+                    <h3>{{ game.title }}</h3>
+                    <p>
+                      {{ game.description }}
+                    </p>
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+            </ng-template>
+          </ng-container>
+
+          <ng-container ngbNavItem>
+            <a ngbNavLink><i class="bi bi-globe"></i> Web</a>
+            <ng-template ngbNavContent>
+              <ngb-carousel>
+                <ng-template ngbSlide *ngFor="let site of websites">
+                  <a [href]="site.link" class="text-decoration-none">
+                    <div class="card">
+                      <img [src]="site.imgSrc" class="h-100 card-img" />
+                    </div>
+                  </a>
+                  <div class="carousel-caption">
+                    <h3>{{ site.title }}</h3>
+                    <p>
+                      {{ site.description }}
+                    </p>
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+            </ng-template>
+          </ng-container>
+
+          <ng-container ngbNavItem>
+            <a ngbNavLink><i class="bi bi-heart-fill"></i> Volunteering</a>
+            <ng-template ngbNavContent> </ng-template>
+          </ng-container>
+        </nav>
+
+        <div [ngbNavOutlet]="nav" class="mt-2 h-100"></div>
+      </div>
+    </div>
+  </div>
+</section>

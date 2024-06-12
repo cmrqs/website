@@ -1,0 +1,22 @@
+<ul class="timeline">
+  <li
+    class="timeline-item"
+    [class.mb-5]="i < entries.length - 1"
+    *ngFor="let entry of entries; index as i"
+  >
+    <span class="timeline-icon">
+      <i class="bi" [ngClass]="'bi-' + entry.icon"></i>
+    </span>
+
+    <p class="fw-bolder text-primary">
+      {{ entry.startDate | date : "y" }} -
+      <span *ngIf="entry.endDate">{{ entry.endDate | date : "y" }}</span>
+      <span *ngIf="!entry.endDate">Present</span>
+    </p>
+    <h5 class="fw-bold">{{ entry.title }}</h5>
+    <p class="mb-2 fw-bolder">{{ entry.subtitle }}</p>
+    <p>
+      {{ entry.description }}
+    </p>
+  </li>
+</ul>

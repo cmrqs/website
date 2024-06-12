@@ -1,0 +1,60 @@
+<nav ngbNav class="navbar navbar-expand-md bg-dark-subtle fixed-top">
+  <div class="container-fluid">
+    <a
+      class="navbar-brand order-1 order-md-0"
+      style="cursor: pointer"
+      (click)="onButtonClicked(fragments[0])"
+    >
+      <b>Mrqs</b>
+    </a>
+
+    <div
+      class="collapse navbar-collapse justify-content-center order-3 order-md-1"
+      [ngbCollapse]="collapsed"
+    >
+      <div class="navbar-nav text-end">
+        <ng-container ngbNavItem *ngFor="let fragment of fragments | slice : 1">
+          <a
+            ngbNavLink
+            class="text-capitalize"
+            [class.active]="fragment === scrollSpy.active"
+            [class.text-primary]="fragment === scrollSpy.active"
+            (click)="onButtonClicked(fragment)"
+          >
+            {{ fragment }}
+          </a>
+        </ng-container>
+      </div>
+    </div>
+
+    <div ngbDropdown display="dynamic" class="order-0 order-md-2">
+      <button type="button" class="btn btn-link text-body" ngbDropdownToggle>
+        <i class="bi" [ngClass]="'bi-' + selectedTheme.icon"></i>
+      </button>
+      <div ngbDropdownMenu class="dropdown-menu-end">
+        <button
+          ngbDropdownItem
+          class="text-capitalize"
+          [class.active]="theme.name === selectedTheme.name"
+          *ngFor="let theme of themes"
+          (click)="onThemeButtonClicked(theme)"
+        >
+          <i class="me-2 bi" [ngClass]="'bi-' + theme.icon"></i>
+          {{ theme.name }}
+          <i
+            class="ms-1 bi bi-patch-check-fill"
+            *ngIf="theme.name === getDefaultTheme().name"
+          ></i>
+        </button>
+      </div>
+    </div>
+
+    <button
+      class="navbar-toggler order-2"
+      type="button"
+      (click)="collapsed = !collapsed"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>

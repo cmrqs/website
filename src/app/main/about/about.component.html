@@ -1,0 +1,97 @@
+<section id="about" class="section">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="about-img">
+          <img src="assets/img/about.jpg" />
+          <div
+            class="nav social-icons justify-content-center align-items-center"
+          >
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+          </div>
+          <h3 class="mt-2">Carlos Marques</h3>
+          <p class="mt-1 text-primary">Computer Scientist</p>
+        </div>
+      </div>
+
+      <div class="col-lg-7 mt-2 mt-lg-0" style="margin-left: auto">
+        <div class="about-info">
+          <h3 class="title">
+            <i class="bi bi-person-fill text-primary"></i> About me
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dapibus
+            quam vitae malesuada dapibus. Nulla a hendrerit nibh, vel placerat
+            leo. Duis in mauris ac urna ultricies dictum ut id sapien.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dapibus
+            quam vitae malesuada dapibus. Nulla a hendrerit nibh, vel placerat
+            leo. Duis in mauris ac urna ultricies dictum ut id sapien.
+          </p>
+          <div class="row" style="padding-top: 15px">
+            <div class="col-sm-6">
+              <ul>
+                <li>
+                  <label class="text-primary"
+                    ><i class="bi bi-person-vcard-fill"></i> Name</label
+                  >
+                  <span>{{ info.name }}</span>
+                </li>
+                <li>
+                  <label class="text-primary"
+                    ><i class="bi bi-calendar-heart-fill"></i> Birthday</label
+                  >
+                  <span
+                    >{{ info.birthday | date : "MMMM d" }}
+                    <i
+                      class="bi bi-cake2-fill text-primary"
+                      *ngIf="birthdayToday"
+                    ></i
+                  ></span>
+                </li>
+                <li>
+                  <label class="text-primary"
+                    ><i class="bi bi-house-fill"></i> Hometown</label
+                  >
+                  <span>{{ info.hometown }}</span>
+                </li>
+                <li>
+                  <label class="text-primary"
+                    ><i class="bi bi-building-fill"></i> Residence</label
+                  >
+                  <span>{{ info.residence }}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <ul>
+                <li>
+                  <label class="text-primary"></label>
+                  <span></span>
+                </li>
+                <li>
+                  <label class="text-primary"></label>
+                  <span></span>
+                </li>
+                <li>
+                  <label class="text-primary"></label>
+                  <span></span>
+                </li>
+                <li>
+                  <label class="text-primary"></label>
+                  <span></span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-6"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+<footer class="bg-dark-subtle py-2">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-6 text-center text-md-end order-0 order-md-1">
+        <a
+          [href]="social.url"
+          target="_blank"
+          *ngFor="let social of socialMedia; index as i"
+          (mouseover)="hoveredIcons.push(social.icon)"
+          (mouseout)="hoveredIcons.pop()"
+        >
+          <button
+            class="btn btn-link p-1"
+            [class.me-2]="i < socialMedia.length - 1"
+            [ngClass]="
+              hoveredIcons.includes(social.icon) ? 'text-primary' : 'text-body'
+            "
+          >
+            <i
+              class="bi"
+              [ngClass]="
+                social.hoverIcon && hoveredIcons.includes(social.icon)
+                  ? 'bi-' + social.hoverIcon
+                  : 'bi-' + social.icon
+              "
+            ></i>
+          </button>
+        </a>
+      </div>
+      <div
+        class="col-12 col-md-6 text-center text-md-start order-1 order-md-0 mt-2 mt-md-0"
+      >
+        <p>Copyleft 🄯 {{ getYear() }} Carlos Marques</p>
+        <p>
+          Licensed under
+          <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank"
+            ><i class="bi bi-file-earmark-text-fill"></i> AGPLv3</a
+          >. View code at
+          <a href="https://github.com/carl-marqs/website" target="_blank"
+            ><i class="bi bi-github"></i> GitHub</a
+          >
+        </p>
+        <p>
+          Version {{ getAppVersion() }} powered by
+          <a href="https://angular.dev/" target="_blank">
+            <i class="devicon-angularjs-plain"></i>
+            Angular {{ getAngularVersion() }}</a
+          >
+          and
+          <a href="https://getbootstrap.com/" target="_blank"
+            ><i class="bi bi-bootstrap-fill"></i> Bootstrap
+            {{ getBootstrapVersion() }}</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,20 @@
+.container {
+  text-align: center;
+}
+
+hr {
+  overflow: visible;
+  border-top: 2px dotted var(--bs-body-color);
+  margin: 0;
+  height: 0;
+  width: 50%;
+  display: inline-block;
+}
+
+hr:after {
+  content: "✦";
+  position: relative;
+  top: -0.75em;
+  font-size: 1.5em;
+  background-color: var(--bs-body-bg);
+}
